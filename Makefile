@@ -1,11 +1,14 @@
-hangman: hangman.o word.o
-	g++ -std=c++11 hangman.o word.o -o hangman
+hangman: hangman.o word.o game.o
+	g++ -std=c++11 hangman.o word.o game.o -o hangman
 
-hangman.o: hangman.cpp word.h
+game.o: Game.cpp Game.h
+	g++ -std=c++11 -g -Wall -c Game.cpp
+
+hangman.o: hangman.cpp Game.h
 	g++ -std=c++11 -g -Wall -c hangman.cpp
 
-word.o: word.cpp word.h
-	g++ -std=c++11 -g -Wall -c word.cpp
+word.o: Word.cpp Word.h
+	g++ -std=c++11 -g -Wall -c Word.cpp
 
 clean:
-	rm hangman hangman.o word.o
+	rm hangman hangman.o word.o game.o
