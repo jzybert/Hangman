@@ -4,45 +4,8 @@
 #include <string>
 #include <algorithm>
 #include <vector>
+#include "Word.h"
 using namespace std;
-
-string Word()//chosing the different words
-{
-	int category;
-	string chosenword;
-	bool wordGot = true;
-	while(wordGot)
-		{
-			cout << "\nChoose a category:\n1. Food\n2. Animal\n3. Miscellaneous\n>> ";
-			cin >> category;
-	
-			if(category == 1)
-			{
-			string WordBankF[]={"apple", "salmon", "tomato", "sauerkraut", "steak", "lobster", "broccoli", "mushroom", "pizza", "lemon"};
-			chosenword=WordBankF[rand()%10];
-			wordGot = false;
-			}
-			else if(category == 2)
-			{
-			string WordBankA[]={"lion", "monkey", "giraffe", "mouse", "orangutan", "peacock", "molerat", "roadrunner", "spider", "elephant"};
-			chosenword=WordBankA[rand()%10];
-			wordGot = false;
-			}
-			else if(category == 3)
-			{
-			string WordBankM[]={"rocket", "building", "umbrella", "studio", "person", "shoe", "swingset", "water", "balloon", "sunglasses"};
-			chosenword=WordBankM[rand()%10];
-			wordGot = false;
-			}
-			else
-			{
-				cin.clear();
-				cin.ignore();
-				cout << "That was not a number.\n\n";;
-			}
-		}
-	return chosenword; //chosenword is put into place of Word()
-}
 
 int main()
 {
@@ -68,7 +31,8 @@ int main()
 		transform(answer.begin(), answer.end(), answer.begin(), ::tolower);//makes it lowercase
 		if(answer == "yes")
 		{
-			word = Word();
+			Word w = Word();
+			word = w.chooseWord();
 			cout << "\n";
 			cout << "Your word is " << word.size() << " letters long.\n\n";
 			wrong = 6;
