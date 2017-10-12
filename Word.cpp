@@ -38,12 +38,3 @@ string Word::chooseWord()
 	
 	return word;
 }
-
-
-
-
-
-
-
-
-
